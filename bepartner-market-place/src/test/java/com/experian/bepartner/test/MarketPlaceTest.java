@@ -13,28 +13,28 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 import com.experian.AppConfig;
-import com.experian.bepartner.dao.IProductDao;
-import com.experian.bepartner.dao.ProductDao;
-import com.experian.bepartner.payload.Producto;
+import com.experian.bepartner.dal.IProductDal;
+import com.experian.bepartner.dal.ProductDal;
+import com.experian.bepartner.payload.Product;
 import com.experian.bepartners.config.BepartnersDataSourceConfig;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = { AppConfig.class,BepartnersDataSourceConfig.class})
+@ContextConfiguration(classes = { AppConfig.class})
 @EnableJpaRepositories(basePackages = { "com.experian.process" })
 public class MarketPlaceTest {
 
 	@Autowired
-	private IProductDao iProductDao;
+	private IProductDal iProductDao;
 
 	@Test
 	public void testA() {
-		Producto producto = new Producto();
-		producto.setVProductcode("FH-2314");
-		producto.setVDescription("Producto FH-2314");
-		producto.setVName("Producto FH-2314");
-		producto.setVIdProductType("TYPE FH-2314");
+		Product producto = new Product();
+		producto.setVProductcode("FHF-2314");
+		producto.setVDescription("Producto FHf-2314");
+		producto.setVName("Producto FHF-2314");
+		producto.setVIdProductType("TYPE FHf-2314");
 
-		iProductDao.paCrearProducto(producto, "");
+		iProductDao.mpProductCreate(producto, "");
 		assertEquals(0, 0);
 	}
 

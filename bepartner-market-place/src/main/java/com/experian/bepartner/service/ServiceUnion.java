@@ -13,7 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.experian.bepartner.dao.IProductDao;
+import com.experian.bepartner.dal.IProductDal;
 import com.experian.bepartners.entity.UCatalog;
 import com.experian.bepartners.repository.UCatalogRepository;
 import com.experian.bepartnerslog.entity.UserLogin;

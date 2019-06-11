@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.experian.bepartner.client.IComponentService;
-import com.experian.bepartner.dao.IProductDao;
+import com.experian.bepartner.dal.IProductDal;
 import com.experian.bepartner.payload.Payload;
-import com.experian.bepartner.payload.Producto;
+import com.experian.bepartner.payload.Product;
 import com.experian.bepartner.service.ComponentService;
 import com.experian.bepartner.service.ServiceUnion;
 import com.experian.bepartners.entity.UCatalog;
@@ -33,18 +33,18 @@ public class InfoPrecargadoController {
 	private ServiceUnion serviceUnion;
 	
 	@Autowired
-	private IProductDao iProductDao;
+	private IProductDal iProductDao;
 	
 	@GetMapping(value = "/test")
 	public String getValue(){
 		
-		Producto producto=new Producto();
+		Product producto=new Product();
 		producto.setVProductcode("FH-2314");
 		producto.setVDescription("Producto FH-2314");
 		producto.setVName("Producto FH-2314");
 		producto.setVIdProductType("TYPE FH-2314");	
 
-		iProductDao.paCrearProducto(producto, "");
+		iProductDao.mpProductCreate(producto, "");
 		
 	   return "hola";
 	}
@@ -88,14 +88,14 @@ public class InfoPrecargadoController {
 	@CrossOrigin(origins = "*", maxAge = 3600)
 	public Payload all(Pageable pageable) {
 //		serviceUnion.getAllUCatalog();
-		Producto producto=new Producto();
+		Product producto=new Product();
 		producto.setVProductcode("CC-2314");
 		producto.setVDescription("Producto CC-2314");
 		producto.setVName("Producto CC-2314");
 		producto.setVIdProductType("TYPE CC-2314");
 		
 //		iProductDao.paCrearProducto(producto);
-		iProductDao.paCrearProducto(producto, "");
+		iProductDao.mpProductCreate(producto, "");
 		logger.debug("InfoPrecargadoController.all:");
 		Payload payload = iInfoPrecargado.list(pageable);
 		return payload;

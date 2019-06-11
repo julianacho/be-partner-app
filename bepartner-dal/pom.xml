@@ -40,6 +40,13 @@
 			<groupId>com.experian</groupId>
 			<artifactId>bepartner-entities</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.experian</groupId>
+			<artifactId>bepartner-orm</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+			<scope>provided</scope>
 		</dependency>
 	</dependencies>
 
