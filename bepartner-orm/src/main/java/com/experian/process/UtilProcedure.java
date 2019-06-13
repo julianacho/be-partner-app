@@ -10,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
+import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.jdbc.core.simple.SimpleJdbcCall;
 import org.springframework.stereotype.Service;
 
@@ -27,25 +28,17 @@ public class UtilProcedure implements IUtilProcedure {
 
 	@Override
 	public Object callProcedure(String procedureName, Map<String, Object> parameters, Class<?> classreturn) {
-		simpleJdbcCall.withProcedureName(procedureName);
-		RowMapper<Object> rowMapper = new RowMapper<Object>() {
-			
-			@Override
-			public Object mapRow(ResultSet rs, int rowNum) throws SQLException {
-				return new Object[] { rowNum, rs.getInt(1) };
-			}
-		};
-		simpleJdbcCall.returningResultSet("RESULTADO", rowMapper);
+		logger.info("UtilProcedure.callProcedure : {}",parameters);
 		
-        MapSqlParameterSource inParams = new MapSqlParameterSource();
-        if(null!=parameters) {
-            for (Map.Entry<String, Object> parameter : parameters.entrySet()) {
-                inParams.addValue(parameter.getKey(), parameter.getValue());
-            }
-        }
-        
-        logger.info("PROCEDURE {} IS CALLED",procedureName);
-        return simpleJdbcCall.execute(inParams);
+		simpleJdbcCall.withProcedureName(procedureName);
+		SqlParameterSource in = new MapSqlParameterSource(parameters);
+		
+		Map<String, Object> simpleJdbcCallResult = simpleJdbcCall.execute(in);
+		
+		
+		logger.info("UtilProcedure.callProcedure - Result : {}",simpleJdbcCallResult);
+		
+        return simpleJdbcCallResult.get("#result-set-1");
 
 	}
 

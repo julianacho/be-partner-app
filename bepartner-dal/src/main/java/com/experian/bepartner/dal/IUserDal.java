@@ -2,12 +2,12 @@ package com.experian.bepartner.dal;
 
 import java.util.List;
 
-import com.experian.bepartner.payload.Usuario;
-import com.experian.bepartner.payload.UsuarioInfo;
+import com.experian.bepartner.payload.User;
+import com.experian.bepartner.payload.UserInfo;
 
 public interface IUserDal {
 	
-	public Object mpUserCreate(Usuario usuario);
+	public Object mpUserCreate(User usuario);
 	
-	public List<Object> mpUserInfoCreate(List<UsuarioInfo> usuarioInfo);
+	public List<Object> mpUserInfoCreate(List<UserInfo> usuarioInfo);
 }

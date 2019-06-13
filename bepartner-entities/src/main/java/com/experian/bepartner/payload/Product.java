@@ -1,11 +1,18 @@
 package com.experian.bepartner.payload;
 
-
 public class Product {
 	private String VName;
 	private String VIdProductType;
 	private String VProductcode;
 	private String VDescription;
+
+	public Product(String vName, String vIdProductType, String vProductcode, String vDescription) {
+		super();
+		VName = vName;
+		VIdProductType = vIdProductType;
+		VProductcode = vProductcode;
+		VDescription = vDescription;
+	}
 
 	public String getVName() {
 		return VName;

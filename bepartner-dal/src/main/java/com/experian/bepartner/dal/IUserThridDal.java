@@ -9,5 +9,5 @@ public interface IUserThridDal {
 
 	public Object mpUserThridCreate(UserThird userThird);
 	
-	public List<Object> mpUserThridInfoCreate(List<UserThirdInfo> userThirdInfos);
+	
 }

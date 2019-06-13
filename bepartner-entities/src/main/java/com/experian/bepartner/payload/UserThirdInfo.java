@@ -7,6 +7,14 @@ public class UserThirdInfo {
 	private String vIdInfoTypeUser;
 	private String vValue;
 
+	public UserThirdInfo(String vIdType, String vIdentificationNumber, String vIdInfoTypeUser, String vValue) {
+		super();
+		this.vIdType = vIdType;
+		this.vIdentificationNumber = vIdentificationNumber;
+		this.vIdInfoTypeUser = vIdInfoTypeUser;
+		this.vValue = vValue;
+	}
+
 	public String getvIdType() {
 		return vIdType;
 	}

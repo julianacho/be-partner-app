@@ -20,7 +20,6 @@ import com.experian.bepartners.config.BepartnersDataSourceConfig;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { AppConfig.class})
-@EnableJpaRepositories(basePackages = { "com.experian.process" })
 public class MarketPlaceTest {
 
 	@Autowired
@@ -28,13 +27,9 @@ public class MarketPlaceTest {
 
 	@Test
 	public void testA() {
-		Product producto = new Product();
-		producto.setVProductcode("FHF-2314");
-		producto.setVDescription("Producto FHf-2314");
-		producto.setVName("Producto FHF-2314");
-		producto.setVIdProductType("TYPE FHf-2314");
+//		Product producto = new Product("Producto FHf-2314", "TYPE FHf-2314", "FHF-2314", "Producto FHF-2314");
 
-		iProductDao.mpProductCreate(producto, "");
+//		iProductDao.mpProductCreate(producto, "");
 		assertEquals(0, 0);
 	}
 

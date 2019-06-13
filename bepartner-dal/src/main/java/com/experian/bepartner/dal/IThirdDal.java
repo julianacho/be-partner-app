@@ -7,7 +7,7 @@ import com.experian.bepartner.payload.ThirdInfo;
 
 public interface IThirdDal {
 
-	public Object mpThirdCreate(Third third);
+	public Third mpThirdCreate(Third third);
 
-	public List<Object> mpThirdInfoCreate(List<ThirdInfo> thirdInfos);
+	public List<ThirdInfo> mpThirdInfoCreate(List<ThirdInfo> thirdInfos);
 }

@@ -2,41 +2,39 @@ package com.experian.bepartner.payload;
 
 public class UserThird {
 
-	public String vIdTypeUser;
-	public String vIdentificationNumberUser;
-	public String vIdTypeThird;
-	public String vIdentificationNumberThird;
+	private String vIdUserPublic;
+	private String vIdThirdPublic;
+	private String vEnable;
 
-	public String getvIdTypeUser() {
-		return vIdTypeUser;
+	public UserThird(String vIdUserPublic, String vIdThirdPublic, String vEnable) {
+		super();
+		this.vIdUserPublic = vIdUserPublic;
+		this.vIdThirdPublic = vIdThirdPublic;
+		this.vEnable = vEnable;
 	}
 
-	public void setvIdTypeUser(String vIdTypeUser) {
-		this.vIdTypeUser = vIdTypeUser;
+	public String getvIdUserPublic() {
+		return vIdUserPublic;
 	}
 
-	public String getvIdentificationNumberUser() {
-		return vIdentificationNumberUser;
+	public void setvIdUserPublic(String vIdUserPublic) {
+		this.vIdUserPublic = vIdUserPublic;
 	}
 
-	public void setvIdentificationNumberUser(String vIdentificationNumberUser) {
-		this.vIdentificationNumberUser = vIdentificationNumberUser;
+	public String getvIdThirdPublic() {
+		return vIdThirdPublic;
 	}
 
-	public String getvIdTypeThird() {
-		return vIdTypeThird;
+	public void setvIdThirdPublic(String vIdThirdPublic) {
+		this.vIdThirdPublic = vIdThirdPublic;
 	}
 
-	public void setvIdTypeThird(String vIdTypeThird) {
-		this.vIdTypeThird = vIdTypeThird;
+	public String getvEnable() {
+		return vEnable;
 	}
 
-	public String getvIdentificationNumberThird() {
-		return vIdentificationNumberThird;
-	}
-
-	public void setvIdentificationNumberThird(String vIdentificationNumberThird) {
-		this.vIdentificationNumberThird = vIdentificationNumberThird;
+	public void setvEnable(String vEnable) {
+		this.vEnable = vEnable;
 	}
 
 }

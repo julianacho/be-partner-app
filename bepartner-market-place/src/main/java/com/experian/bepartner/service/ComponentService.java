@@ -6,7 +6,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
-import com.experian.bepartner.client.IComponentService;
 import com.experian.bepartner.payload.Payload;
 import com.experian.bepartners.entity.UCatalog;
 

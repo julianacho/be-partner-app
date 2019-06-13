@@ -5,7 +5,8 @@ import org.springframework.http.HttpStatus;
 public class Payload {
 	private HttpStatus status;
 	private Object content;
-	
+	private String message;
+
 	public Payload(HttpStatus status, Object content) {
 		super();
 		this.status = status;
@@ -31,6 +32,14 @@ public class Payload {
 
 	public void setContent(Object content) {
 		this.content = content;
+	}
+
+	public String getMessage() {
+		return message;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
 	}
 
 }

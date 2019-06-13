@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
 
 import com.experian.bepartner.payload.UserThird;
 import com.experian.bepartner.payload.UserThirdInfo;
-import com.experian.bepartner.payload.UsuarioInfo;
+import com.experian.bepartner.payload.UserInfo;
 import com.experian.process.IProcessService;
 
 @Service
@@ -30,39 +30,22 @@ public class UserThridDal implements IUserThridDal {
 	@Qualifier("bepartnersDataSource")
 	private DataSource dataSource;
 
+
+
 	@Override
 	public Object mpUserThridCreate(UserThird userThird) {
 
 		Map<String, Object> parameters = new HashMap<String, Object>();
-		parameters.put("V_Id_Type_User", userThird.getvIdTypeUser());
-		parameters.put("V_Identification_Number_User", userThird.getvIdentificationNumberUser());
-		parameters.put("V_Id_Type_Third", userThird.getvIdTypeThird());
-		parameters.put("V_Identification_Number_Third", userThird.getvIdentificationNumberThird());
+		parameters.put("V_Id_User_Public", userThird.getvIdThirdPublic());
+		parameters.put("V_Id_Third_Public", userThird.getvIdThirdPublic());
+		parameters.put("V_Enable", userThird.getvEnable());
 
-		Object object = iProcessService.callProcedure(dataSource, "MP_Create_User_Third", parameters, Object.class);
+		Object object = iProcessService.callProcedure(dataSource, "SP_UpSert_User_third", parameters, Object.class);
 
 		logger.debug("UserThridDal.mpUserThridCreate {}", object);
 
 		return object;
 	}
-
-	@Override
-	public List<Object> mpUserThridInfoCreate(List<UserThirdInfo> userThirdInfos) {
-
-		List<Object> response=new ArrayList<Object>();
-		for (UserThirdInfo userThirdInfo : userThirdInfos) {
-			Map<String, Object> parameters = new HashMap<String, Object>();
-			parameters.put("V_Id_Type", userThirdInfo.getvIdType());
-			parameters.put("V_Identification_Number", userThirdInfo.getvIdentificationNumber());
-			parameters.put("V_Id_Info_Type_User", userThirdInfo.getvIdInfoTypeUser());
-			parameters.put("V_Value", userThirdInfo.getvValue());
-
-			Object object = iProcessService.callProcedure(dataSource, "MP_Create_User_Info", parameters, Object.class);
-			response.add(object);
-			logger.debug("UserThridDal.mpUserThridInfoCreate {}", object);
-
-		}
-		return response;
-	}
-
+	
+ 
 }

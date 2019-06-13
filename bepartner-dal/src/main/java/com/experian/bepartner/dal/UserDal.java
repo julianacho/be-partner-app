@@ -13,8 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-import com.experian.bepartner.payload.Usuario;
-import com.experian.bepartner.payload.UsuarioInfo;
+import com.experian.bepartner.payload.User;
+import com.experian.bepartner.payload.UserInfo;
 import com.experian.process.IProcessService;
 
 @Service
@@ -30,34 +30,37 @@ public class UserDal implements IUserDal {
 	private DataSource dataSource;
 
 	@Override
-	public Object mpUserCreate(Usuario usuario) {
+	public Object mpUserCreate(User usuario) {
 
 		Map<String, Object> parameters = new HashMap<String, Object>();
+		parameters.put("V_Id_User_Public", usuario.getvIdType());
 		parameters.put("V_Id_Type", usuario.getvIdType());
-		parameters.put("V_Identification_Number", usuario.getvIdentificationNumber());
-		parameters.put("V_Name", usuario.getvName());
-		parameters.put("V_Last_Name", usuario.getvLastName());
-		parameters.put("V_Email", usuario.getvEmail());
-		parameters.put("V_Phone", usuario.getvPhone());
-		parameters.put("V_Profile_Picture", usuario.getvProfilePicture());
+		parameters.put("V_Identification_Number", usuario.getvIdType());
+		parameters.put("V_Name", usuario.getvIdType());
+		parameters.put("V_Last_Name", usuario.getvIdType());
+		parameters.put("V_Email", usuario.getvIdType());
+		parameters.put("V_Phone", usuario.getvIdType());
+		parameters.put("V_Profile_Picture", usuario.getvIdType());
+		parameters.put("V_Enable", usuario.getvIdType());
 
-		Object object = iProcessService.callProcedure(dataSource, "MP_Create_User", parameters, Object.class);
+		Object object = iProcessService.callProcedure(dataSource, "SP_UpSert_User", parameters, Object.class);
 
 		logger.debug("UserDal.mpUserCreate {}", object);
 		return object;
 	}
 
 	@Override
-	public List<Object> mpUserInfoCreate(List<UsuarioInfo> usuarioInfoList) {
+	public List<Object> mpUserInfoCreate(List<UserInfo> usuarioInfoList) {
 		List<Object> response = new ArrayList<Object>();
-		for (UsuarioInfo usuarioInfo : usuarioInfoList) {
+		for (UserInfo usuarioInfo : usuarioInfoList) {
 			Map<String, Object> parameters = new HashMap<String, Object>();
-			parameters.put("V_Id_Type", usuarioInfo.getvIdType());
-			parameters.put("V_Identification_Number", usuarioInfo.getvIdentificationNumber());
+			parameters.put("V_Id_User_Public", usuarioInfo.getvIdUserPublic());
 			parameters.put("V_Id_Info_Type_User", usuarioInfo.getvIdInfoTypeUser());
 			parameters.put("V_Value", usuarioInfo.getvValue());
+			parameters.put("V_Enable", usuarioInfo.getvEnable());
 
-			Object object = iProcessService.callProcedure(dataSource, "MP_Create_User_Info", parameters, Object.class);
+			Object object = iProcessService.callProcedure(dataSource, "SP_UpSert_User_Info", parameters,
+					Object.class);
 			response.add(object);
 			logger.debug("UserDal.mpUserInfoCreate {}", object);
 		}

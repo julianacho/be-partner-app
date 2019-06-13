@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 import com.experian.bepartner.payload.Third;
 import com.experian.bepartner.payload.ThirdInfo;
 import com.experian.process.IProcessService;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Service
 public class ThirdDal implements IThirdDal {
@@ -30,29 +31,49 @@ public class ThirdDal implements IThirdDal {
 	private DataSource dataSource;
 
 	@Override
-	public Object mpThirdCreate(Third third) {
+	public Third mpThirdCreate(Third third) {
 		Map<String, Object> parameters = new HashMap<String, Object>();
-		parameters.put("V_Id_Type", third.getVIdType());
-		parameters.put("V_Identification_Number", third.getVIdentificationNumber());
-		parameters.put("V_Profile_Info", third.getVProfileInfo());
-		Object object = iProcessService.callProcedure(dataSource, "MP_Create_Third", parameters, Object.class);
+		parameters.put("v_Id_Third_Public", third.getV_Id_Third_Public());
+		parameters.put("V_Id_Type", third.getV_Id_Type());
+		parameters.put("V_Identification_Number", third.getV_Identification_Number());
+		parameters.put("V_Business_Name", third.getV_Business_Name());
+		parameters.put("V_Enable", third.getV_Enable());
+		List<Map> listMap =  (List<Map>) iProcessService.callProcedureResultToJson(dataSource, "SP_UpSert_Third", parameters,
+				Third.class);
+		
+		Third result = new Third((String)listMap.get(0).get("Id_Third_Public"), 
+				(String)listMap.get(0).get("Id_Type"), 
+				(String)listMap.get(0).get("Identification_Number"), 
+				(String)listMap.get(0).get("Business_Name"), 
+				(Boolean)listMap.get(0).get("Enable") ? 1 : 0);
+	 
+		 
 
-		logger.debug("ThirdDal.mpThirdCreate {}", object);
-		return object;
+		logger.debug("ThirdDal.mpThirdCreate {}", result);
+		return result;
 	}
 
 	@Override
-	public List<Object> mpThirdInfoCreate(List<ThirdInfo> thirdInfos) {
-		List<Object> response = new ArrayList<Object>();
+	public List<ThirdInfo> mpThirdInfoCreate(List<ThirdInfo> thirdInfos) {
+		List<ThirdInfo> response = new ArrayList<ThirdInfo>();
 		for (ThirdInfo thirdInfo : thirdInfos) {
 			Map<String, Object> parameters = new HashMap<String, Object>();
-			parameters.put("V_Id_Type", thirdInfo.getVIdType());
-			parameters.put("V_Identification_Number", thirdInfo.getVIdentificationNumber());
-			parameters.put("V_Id_Info_Type_Third", thirdInfo.getVIdInfoTypeThird());
-			parameters.put("V_Value", thirdInfo.getValue());
-			Object object = iProcessService.callProcedure(dataSource, "MP_Create_Third_Info", parameters, Object.class);
-			response.add(object);
-			logger.debug("ThirdDal.mpThirdInfoCreate {}", object);
+			parameters.put("V_Id_Third_Public", thirdInfo.getV_Id_Third_Public());
+			parameters.put("V_Id_Info_Type_Third", thirdInfo.getV_Id_Info_Type_Third());
+			parameters.put("V_Value", thirdInfo.getV_Value());
+			parameters.put("V_Enable", thirdInfo.getV_Enable());
+
+			List<Map> listMap =  (List<Map>) iProcessService.callProcedureResultToJson(dataSource,
+					"SP_UpSert_Third_Basic_Info", parameters, ThirdInfo.class);
+			
+			ThirdInfo result = new ThirdInfo(
+					"", 
+					(String)listMap.get(0).get("Id_Info_Type_Third"), 
+					(String)listMap.get(0).get("Value"), 
+					(Boolean)listMap.get(0).get("Enable") ? 1 : 0);
+			
+			response.add(result);
+			logger.debug("ThirdDal.mpThirdInfoCreate {}", result);
 		}
 
 		return response;

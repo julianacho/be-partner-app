@@ -12,12 +12,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.experian.bepartner.client.IComponentService;
 import com.experian.bepartner.dal.IProductDal;
 import com.experian.bepartner.payload.Payload;
 import com.experian.bepartner.payload.Product;
-import com.experian.bepartner.service.ComponentService;
-import com.experian.bepartner.service.ServiceUnion;
+import com.experian.bepartner.service.IComponentService;
 import com.experian.bepartners.entity.UCatalog;
 
 @RestController
@@ -28,25 +26,19 @@ public class InfoPrecargadoController {
 
 	@Autowired
 	private IComponentService iInfoPrecargado;
-	
-	@Autowired
-	private ServiceUnion serviceUnion;
-	
+
 	@Autowired
 	private IProductDal iProductDao;
-	
+
 	@GetMapping(value = "/test")
-	public String getValue(){
+	public String getValue() {
+
+		Product producto = new Product("Producto FHf-2314", "TYPE FHf-2314", "FHF-2314", "Producto FHF-2314");
 		
-		Product producto=new Product();
-		producto.setVProductcode("FH-2314");
-		producto.setVDescription("Producto FH-2314");
-		producto.setVName("Producto FH-2314");
-		producto.setVIdProductType("TYPE FH-2314");	
 
 		iProductDao.mpProductCreate(producto, "");
-		
-	   return "hola";
+
+		return "hola";
 	}
 
 	@PostMapping("/save/")
@@ -83,17 +75,14 @@ public class InfoPrecargadoController {
 		return payload;
 
 	}
-	
+
 	@GetMapping("/all/")
 	@CrossOrigin(origins = "*", maxAge = 3600)
 	public Payload all(Pageable pageable) {
 //		serviceUnion.getAllUCatalog();
-		Product producto=new Product();
-		producto.setVProductcode("CC-2314");
-		producto.setVDescription("Producto CC-2314");
-		producto.setVName("Producto CC-2314");
-		producto.setVIdProductType("TYPE CC-2314");
+		Product producto = new Product("Producto FHf-2314", "TYPE FHf-2314", "FHF-2314", "Producto FHF-2314");
 		
+
 //		iProductDao.paCrearProducto(producto);
 		iProductDao.mpProductCreate(producto, "");
 		logger.debug("InfoPrecargadoController.all:");
