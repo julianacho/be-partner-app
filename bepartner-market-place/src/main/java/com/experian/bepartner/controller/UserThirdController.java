@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.experian.bepartner.payload.Payload;
-import com.experian.bepartner.payload.UserThirdModel;
+import com.experian.bepartner.payload.RegisterModel;
 import com.experian.bepartner.service.IUserThirdService;
 
 @RestController
@@ -24,10 +24,10 @@ public class UserThirdController {
 
 	@PostMapping("/create/")
 	@CrossOrigin(origins = "*", maxAge = 3600)
-	public Payload create(@RequestBody UserThirdModel userThirdModel) {
+	public Payload create(@RequestBody RegisterModel userThirdModel) {
 		logger.debug("UserThirdController.create:" + userThirdModel.toString());
-		Payload payload = iUserThirdService.userThirdCreate(userThirdModel);
-		return payload;
+//		Payload payload = iUserThirdService.mpUserThridCreate(userThirdModel);
+		return null;
 	}
 
 }

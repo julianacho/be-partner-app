@@ -1,0 +1,53 @@
+{
+   "user":{
+      "vIdUserPublic":"",
+      "vIdType":"IDENIT",
+      "vIdentificationNumber":"5316540241",
+      "vName":"Steven Camilo",
+      "vLastName":"Pacheco",
+      "vEmail":"steven.ju@gmail.com",
+      "vPhone":"617345648",
+      "vProfilePicture":"foto url",
+      "vEnable":1
+   },
+   "userInfo":[
+      {
+         "vIdUserPublic":"",
+         "vIdInfoTypeUser":"201001",
+         "vValue":"102002",
+         "vEnable":1
+      },
+      {
+         "vIdUserPublic":"",
+         "vIdInfoTypeUser":"201002",
+         "vValue":"103001",
+         "vEnable":1
+      }
+   ],
+   "third":{
+      "v_Id_Third_Public":"",
+      "v_Business_Name":"Empresa X2",
+      "v_Identification_Number":"46230531241",
+      "v_Id_Type":"IDENIT",
+      "v_Enable":1,
+      "id_Third":null
+   },
+   "thirdInfo":[
+      {
+         "v_Id_Info_Type_Third":"301006",
+         "v_Id_Third_Public":"",
+         "v_Enable":1,
+         "v_Value":"102002",
+         "id_Third":null,
+         "id_Third_InfioPrimaria":null
+      },
+      {
+         "v_Id_Info_Type_Third":"301007",
+         "v_Id_Third_Public":"",
+         "v_Enable":1,
+         "v_Value":"105001",
+         "id_Third":null,
+         "id_Third_InfioPrimaria":null
+      }
+   ]
+}

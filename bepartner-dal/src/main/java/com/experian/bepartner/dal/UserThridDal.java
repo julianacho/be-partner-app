@@ -33,18 +33,20 @@ public class UserThridDal implements IUserThridDal {
 
 
 	@Override
-	public Object mpUserThridCreate(UserThird userThird) {
+	public UserThird mpUserThridCreate(UserThird userThird) {
 
 		Map<String, Object> parameters = new HashMap<String, Object>();
-		parameters.put("V_Id_User_Public", userThird.getvIdThirdPublic());
+		parameters.put("V_Id_User_Public", userThird.getvIdUserPublic());
 		parameters.put("V_Id_Third_Public", userThird.getvIdThirdPublic());
 		parameters.put("V_Enable", userThird.getvEnable());
 
-		Object object = iProcessService.callProcedure(dataSource, "SP_UpSert_User_third", parameters, Object.class);
+		List<Map> listMap =  (List<Map>) iProcessService.callProcedure(dataSource, "SP_UpSert_User_third", parameters, Object.class);
+ 
+		UserThird userThirdResponse=new UserThird();
+		userThirdResponse.setIdUserThird(Integer.valueOf((String)listMap.get(0).get("Id_User_Third")));
+		logger.debug("UserThridDal.mpUserThridCreate {}", userThirdResponse);
 
-		logger.debug("UserThridDal.mpUserThridCreate {}", object);
-
-		return object;
+		return userThirdResponse;
 	}
 	
  

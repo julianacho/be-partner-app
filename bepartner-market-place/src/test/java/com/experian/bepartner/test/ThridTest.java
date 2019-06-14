@@ -34,10 +34,10 @@ public class ThridTest {
 	@Test
 	public void createThirdModel() {
 		
-		Payload payloadThirdExist=iThirdService.findByIdentify("IDENIT", "8995154024");
+		Payload payloadThirdExist=iThirdService.findByIdentify("IDENIT", "7775154024");
 		if(payloadThirdExist.getStatus().equals(HttpStatus.NO_CONTENT)) {
 			
-			Third third=new Third("", "IDENIT", "8995154024", "Empresa X1", 1);
+			Third third=new Third("", "IDENIT", "7775154024", "Empresa X1", 1);
 			ThirdInfo thirdInfoTHIDS=new ThirdInfo("", "THIDS", "prueba 1", 1);
 			ThirdInfo thirdInfoEGSD=new ThirdInfo("", "EGSD", "prueba 2",1);
 			
@@ -54,10 +54,10 @@ public class ThridTest {
 	@Test
 	public void createThirdAndThirdInfo() {
 		
-		Payload payloadThirdExist=iThirdService.findByIdentify("IDENIT", "8993053124");
+		Payload payloadThirdExist=iThirdService.findByIdentify("IDENIT", "5553053124");
 		if(payloadThirdExist.getStatus().equals(HttpStatus.NO_CONTENT)) {
 			
-			Third third=new Third("", "IDENIT", "8993053124", "Empresa X2", 1);
+			Third third=new Third("", "IDENIT", "5553053124", "Empresa X2", 1);
 			
 			Payload payloadThirdResult=iThirdService.thirdCreate(third);
 			if(payloadThirdResult.getStatus().equals(HttpStatus.ACCEPTED)) {

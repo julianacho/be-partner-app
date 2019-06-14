@@ -7,7 +7,7 @@ import com.experian.bepartner.payload.UserThirdInfo;
 
 public interface IUserThridDal {
 
-	public Object mpUserThridCreate(UserThird userThird);
+	public UserThird mpUserThridCreate(UserThird userThird);
 	
 	
 }

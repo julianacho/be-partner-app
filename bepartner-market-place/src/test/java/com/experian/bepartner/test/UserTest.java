@@ -35,10 +35,10 @@ public class UserTest {
 	@Test
 	public void createUserModel() {
 
-		Payload payloadThirdExist = iUserService.findByIdentify("IDENIT", "8995154024");
+		Payload payloadThirdExist = iUserService.findByIdentify("IDENIT", "9995154024");
 		if (payloadThirdExist.getStatus().equals(HttpStatus.NO_CONTENT)) {
 
-			User user = new User("", "IDENIT", "8995154024", "Andres Camilo","Pacheco", "andres.hu@gmail.com", "300827648",
+			User user = new User("", "IDENIT", "9995154024", "Andres Camilo","Pacheco", "andres.hu@gmail.com", "300827648",
 					"foto url", 1);
 			UserInfo userInfoDATO1 = new UserInfo("", "DATO1", "Calle 33", 1);
 			UserInfo userInfoDATO2 = new UserInfo("", "DATO2", "Informe 22", 1);
@@ -48,14 +48,14 @@ public class UserTest {
 			userInfos.add(userInfoDATO2);
 			UserModel userModel = new UserModel(user, userInfos);
 
-			Payload thirdInfoCreate = iUserService.userModelCreate(userModel);
-			assertEquals(thirdInfoCreate.getStatus(), HttpStatus.ACCEPTED);
+			Payload userModelCreate = iUserService.userModelCreate(userModel);
+			assertEquals(userModelCreate.getStatus(), HttpStatus.ACCEPTED);
 		}
 	}
 
 	@Test
 	public void createUserAndThirdInfo() {
-		Payload payloadUserExist = iUserService.findByIdentify("IDENIT", "735654024");
+		Payload payloadUserExist = iUserService.findByIdentify("IDENIT", "555654024");
 		if (payloadUserExist.getStatus().equals(HttpStatus.NO_CONTENT)) {
 			User user = new User("", "IDENIT", "735654024", "Steven Camilo","Pacheco", "steven.ju@gmail.com", "317345648",
 					"foto url", 1);

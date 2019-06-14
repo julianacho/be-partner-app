@@ -11,7 +11,7 @@ import com.experian.bepartner.dal.IUserDal;
 import com.experian.bepartner.dal.IUserThridDal;
 import com.experian.bepartner.payload.Payload;
 import com.experian.bepartner.payload.UserThird;
-import com.experian.bepartner.payload.UserThirdModel;
+import com.experian.bepartner.payload.RegisterModel;
 
 @Service
 public class UserThirdService implements IUserThirdService {
@@ -28,7 +28,7 @@ public class UserThirdService implements IUserThirdService {
 	private IUserThridDal iUserThridDal;
 	
 	@Override
-	public Payload userThirdCreate(UserThirdModel userThirdModel) {
+	public Payload userThirdCreate(RegisterModel userThirdModel) {
 		iUserDal.mpUserCreate(userThirdModel.getUser());
 		iUserDal.mpUserInfoCreate(userThirdModel.getUserInfo());
 		
@@ -39,9 +39,9 @@ public class UserThirdService implements IUserThirdService {
 	}
 
 	@Override
-	public Object mpUserThridCreate(UserThird userThird) {
-		iUserThridDal.mpUserThridCreate(userThird);
-		return new Payload(HttpStatus.ACCEPTED);
+	public Payload mpUserThridCreate(UserThird userThird) {
+		UserThird userThirdResponse=iUserThridDal.mpUserThridCreate(userThird);
+		return new Payload(HttpStatus.ACCEPTED,userThirdResponse);
 	}
 
 }

@@ -2,15 +2,30 @@ package com.experian.bepartner.payload;
 
 public class UserThird {
 
+	private Integer idUserThird;
 	private String vIdUserPublic;
 	private String vIdThirdPublic;
-	private String vEnable;
+	private Integer vEnable;
 
-	public UserThird(String vIdUserPublic, String vIdThirdPublic, String vEnable) {
+	public UserThird() {
 		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public UserThird(Integer idUserThird, String vIdUserPublic, String vIdThirdPublic, Integer vEnable) {
+		super();
+		this.idUserThird = idUserThird;
 		this.vIdUserPublic = vIdUserPublic;
 		this.vIdThirdPublic = vIdThirdPublic;
 		this.vEnable = vEnable;
+	}
+
+	public Integer getIdUserThird() {
+		return idUserThird;
+	}
+
+	public void setIdUserThird(Integer idUserThird) {
+		this.idUserThird = idUserThird;
 	}
 
 	public String getvIdUserPublic() {
@@ -29,11 +44,11 @@ public class UserThird {
 		this.vIdThirdPublic = vIdThirdPublic;
 	}
 
-	public String getvEnable() {
+	public Integer getvEnable() {
 		return vEnable;
 	}
 
-	public void setvEnable(String vEnable) {
+	public void setvEnable(Integer vEnable) {
 		this.vEnable = vEnable;
 	}
 
