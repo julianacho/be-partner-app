@@ -41,7 +41,8 @@ public class ThirdDal implements IThirdDal {
 		List<Map> listMap =  (List<Map>) iProcessService.callProcedureResultToJson(dataSource, "SP_UpSert_Third", parameters,
 				Third.class);
 		
-		Third result = new Third((String)listMap.get(0).get("Id_Third_Public"), 
+		Third result = new Third(
+				(String)listMap.get(0).get("Id_Third_Public"), 
 				(String)listMap.get(0).get("Id_Type"), 
 				(String)listMap.get(0).get("Identification_Number"), 
 				(String)listMap.get(0).get("Business_Name"), 

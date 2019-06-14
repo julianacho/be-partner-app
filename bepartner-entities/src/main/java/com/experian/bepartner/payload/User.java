@@ -6,22 +6,37 @@ public class User {
 	private String vIdType;
 	private String vIdentificationNumber;
 	private String vName;
+	private String vLastName;
 	private String vEmail;
 	private String vPhone;
 	private String vProfilePicture;
-	private String vEnable;
+	private Integer vEnable;
 
-	public User(String vIdUserPublic, String vIdType, String vIdentificationNumber, String vName, String vEmail,
-			String vPhone, String vProfilePicture, String vEnable) {
+	public User() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public User(String vIdUserPublic, String vIdType, String vIdentificationNumber, String vName, String vLastName,
+			String vEmail, String vPhone, String vProfilePicture, Integer vEnable) {
 		super();
 		this.vIdUserPublic = vIdUserPublic;
 		this.vIdType = vIdType;
 		this.vIdentificationNumber = vIdentificationNumber;
 		this.vName = vName;
+		this.vLastName = vLastName;
 		this.vEmail = vEmail;
 		this.vPhone = vPhone;
 		this.vProfilePicture = vProfilePicture;
 		this.vEnable = vEnable;
+	}
+
+	public String getvLastName() {
+		return vLastName;
+	}
+
+	public void setvLastName(String vLastName) {
+		this.vLastName = vLastName;
 	}
 
 	public String getvIdUserPublic() {
@@ -80,11 +95,11 @@ public class User {
 		this.vProfilePicture = vProfilePicture;
 	}
 
-	public String getvEnable() {
+	public Integer getvEnable() {
 		return vEnable;
 	}
 
-	public void setvEnable(String vEnable) {
+	public void setvEnable(Integer vEnable) {
 		this.vEnable = vEnable;
 	}
 

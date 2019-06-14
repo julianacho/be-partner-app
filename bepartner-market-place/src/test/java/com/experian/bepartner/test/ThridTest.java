@@ -1,5 +1,7 @@
 package com.experian.bepartner.test;
 
+import static org.junit.Assert.assertEquals;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,10 +34,10 @@ public class ThridTest {
 	@Test
 	public void createThirdModel() {
 		
-		Payload payloadThirdExist=iThirdService.findByIdentify("IDENIT", "7645154024");
+		Payload payloadThirdExist=iThirdService.findByIdentify("IDENIT", "8995154024");
 		if(payloadThirdExist.getStatus().equals(HttpStatus.NO_CONTENT)) {
 			
-			Third third=new Third("", "IDENIT", "7645154024", "Empresa X1", 1);
+			Third third=new Third("", "IDENIT", "8995154024", "Empresa X1", 1);
 			ThirdInfo thirdInfoTHIDS=new ThirdInfo("", "THIDS", "prueba 1", 1);
 			ThirdInfo thirdInfoEGSD=new ThirdInfo("", "EGSD", "prueba 2",1);
 			
@@ -44,17 +46,18 @@ public class ThridTest {
 			thirdInfos.add(thirdInfoEGSD);
 			ThirdModel thirdModel=new ThirdModel(third, thirdInfos);
 			
-			iThirdService.thirdModelCreate(thirdModel);
+			Payload thirdInfoCreate=iThirdService.thirdModelCreate(thirdModel);
+			assertEquals(thirdInfoCreate.getStatus(), HttpStatus.ACCEPTED);
 		}	
 	}
 	
 	@Test
 	public void createThirdAndThirdInfo() {
 		
-		Payload payloadThirdExist=iThirdService.findByIdentify("IDENIT", "9643053124");
+		Payload payloadThirdExist=iThirdService.findByIdentify("IDENIT", "8993053124");
 		if(payloadThirdExist.getStatus().equals(HttpStatus.NO_CONTENT)) {
 			
-			Third third=new Third("", "IDENIT", "9643053124", "Empresa X2", 1);
+			Third third=new Third("", "IDENIT", "8993053124", "Empresa X2", 1);
 			
 			Payload payloadThirdResult=iThirdService.thirdCreate(third);
 			if(payloadThirdResult.getStatus().equals(HttpStatus.ACCEPTED)) {
@@ -67,7 +70,13 @@ public class ThridTest {
 				thirdInfos.add(thirdInfoTHIDS);
 				thirdInfos.add(thirdInfoEGSD);
 				
+				Payload thirdInfoResponse=iThirdService.thirdInfoCreate(thirdInfos);
+				
+				assertEquals(thirdInfoResponse.getStatus(), HttpStatus.ACCEPTED);
+				
 			}
+			
+			
 		}	
 	}
 }

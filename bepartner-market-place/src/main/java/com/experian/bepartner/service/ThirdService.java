@@ -35,7 +35,7 @@ public class ThirdService implements IThirdService {
 			thirdInfo.setV_Id_Third_Public(third.getV_Id_Third_Public());
 		}
 		List<ThirdInfo> thirdInfos=iThirdDal.mpThirdInfoCreate(thirdModel.getThirdInfos());
-		return new Payload(HttpStatus.ACCEPTED,thirdInfos);
+		return new Payload(HttpStatus.ACCEPTED,new ThirdModel(third, thirdInfos));
 	}
 
 	@Override

@@ -4,9 +4,9 @@ public class UserInfo {
 	private String vIdUserPublic;
 	private String vIdInfoTypeUser;
 	private String vValue;
-	private String vEnable;
+	private Integer vEnable;
 
-	public UserInfo(String vIdUserPublic, String vIdInfoTypeUser, String vValue, String vEnable) {
+	public UserInfo(String vIdUserPublic, String vIdInfoTypeUser, String vValue, Integer vEnable) {
 		super();
 		this.vIdUserPublic = vIdUserPublic;
 		this.vIdInfoTypeUser = vIdInfoTypeUser;
@@ -38,11 +38,11 @@ public class UserInfo {
 		this.vValue = vValue;
 	}
 
-	public String getvEnable() {
+	public Integer getvEnable() {
 		return vEnable;
 	}
 
-	public void setvEnable(String vEnable) {
+	public void setvEnable(Integer vEnable) {
 		this.vEnable = vEnable;
 	}
 

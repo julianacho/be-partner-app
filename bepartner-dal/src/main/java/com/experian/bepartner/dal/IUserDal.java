@@ -7,7 +7,7 @@ import com.experian.bepartner.payload.UserInfo;
 
 public interface IUserDal {
 	
-	public Object mpUserCreate(User usuario);
+	public User mpUserCreate(User usuario);
 	
-	public List<Object> mpUserInfoCreate(List<UserInfo> usuarioInfo);
+	public List<UserInfo> mpUserInfoCreate(List<UserInfo> usuarioInfo);
 }
