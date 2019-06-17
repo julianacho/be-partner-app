@@ -3,8 +3,8 @@ package com.experian.bepartner.service;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-import com.experian.bepartner.payload.Payload;
 import com.experian.bepartners.entity.UCatalog;
+import com.experian.bepartners.payload.Payload;
 
 public interface IComponentService {
 	

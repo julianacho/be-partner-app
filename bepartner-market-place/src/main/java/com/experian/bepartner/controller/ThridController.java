@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.experian.bepartner.payload.Payload;
-import com.experian.bepartner.payload.ThirdModel;
 import com.experian.bepartner.service.IThirdService;
+import com.experian.bepartners.payload.Payload;
+import com.experian.bepartners.payload.ThirdModel;
 
 @RestController
 @RequestMapping("/api/third/create/")

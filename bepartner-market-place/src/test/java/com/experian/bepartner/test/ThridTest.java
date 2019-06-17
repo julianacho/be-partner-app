@@ -16,11 +16,11 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.experian.AppConfig;
 import com.experian.bepartner.dal.ProductDal;
-import com.experian.bepartner.payload.Payload;
-import com.experian.bepartner.payload.Third;
-import com.experian.bepartner.payload.ThirdInfo;
-import com.experian.bepartner.payload.ThirdModel;
 import com.experian.bepartner.service.IThirdService;
+import com.experian.bepartners.payload.Payload;
+import com.experian.bepartners.payload.Third;
+import com.experian.bepartners.payload.ThirdInfo;
+import com.experian.bepartners.payload.ThirdModel;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { AppConfig.class})

@@ -1,11 +1,10 @@
 package com.experian.bepartner.service;
 
-import com.experian.bepartner.payload.Payload;
-import com.experian.bepartner.payload.UserThird;
-import com.experian.bepartner.payload.RegisterModel;
+import com.experian.bepartners.payload.Payload;
+import com.experian.bepartners.payload.RegisterModel;
+import com.experian.bepartners.payload.UserThird;
 
 public interface IUserThirdService {
-	public Payload userThirdCreate(RegisterModel userThirdModel);
 	
 	public Payload mpUserThridCreate(UserThird userThird);
 }

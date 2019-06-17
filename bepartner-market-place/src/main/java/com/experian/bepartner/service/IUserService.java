@@ -2,10 +2,10 @@ package com.experian.bepartner.service;
 
 import java.util.List;
 
-import com.experian.bepartner.payload.Payload;
-import com.experian.bepartner.payload.User;
-import com.experian.bepartner.payload.UserInfo;
-import com.experian.bepartner.payload.UserModel;
+import com.experian.bepartners.payload.Payload;
+import com.experian.bepartners.payload.User;
+import com.experian.bepartners.payload.UserInfo;
+import com.experian.bepartners.payload.UserModel;
 
 public interface IUserService {
 

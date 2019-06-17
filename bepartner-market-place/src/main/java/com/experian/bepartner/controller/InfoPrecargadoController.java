@@ -13,10 +13,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.experian.bepartner.dal.IProductDal;
-import com.experian.bepartner.payload.Payload;
-import com.experian.bepartner.payload.Product;
 import com.experian.bepartner.service.IComponentService;
 import com.experian.bepartners.entity.UCatalog;
+import com.experian.bepartners.payload.Payload;
+import com.experian.bepartners.payload.Product;
 
 @RestController
 @RequestMapping("/api/inforecargado/")
@@ -36,7 +36,7 @@ public class InfoPrecargadoController {
 		Product producto = new Product("Producto FHf-2314", "TYPE FHf-2314", "FHF-2314", "Producto FHF-2314");
 		
 
-		iProductDao.mpProductCreate(producto, "");
+//		iProductDao.mpProductCreate(producto, "");
 
 		return "hola";
 	}
@@ -84,7 +84,7 @@ public class InfoPrecargadoController {
 		
 
 //		iProductDao.paCrearProducto(producto);
-		iProductDao.mpProductCreate(producto, "");
+//		iProductDao.mpProductCreate(producto, "");
 		logger.debug("InfoPrecargadoController.all:");
 		Payload payload = iInfoPrecargado.list(pageable);
 		return payload;

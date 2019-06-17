@@ -2,10 +2,10 @@ package com.experian.bepartner.service;
 
 import java.util.List;
 
-import com.experian.bepartner.payload.Payload;
-import com.experian.bepartner.payload.Third;
-import com.experian.bepartner.payload.ThirdInfo;
-import com.experian.bepartner.payload.ThirdModel;
+import com.experian.bepartners.payload.Payload;
+import com.experian.bepartners.payload.Third;
+import com.experian.bepartners.payload.ThirdInfo;
+import com.experian.bepartners.payload.ThirdModel;
 
 public interface IThirdService {
 	public Payload thirdModelCreate(ThirdModel thirdModel);

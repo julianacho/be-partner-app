@@ -15,14 +15,14 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.experian.AppConfig;
-import com.experian.bepartner.payload.Payload;
-import com.experian.bepartner.payload.Third;
-import com.experian.bepartner.payload.ThirdInfo;
-import com.experian.bepartner.payload.ThirdModel;
-import com.experian.bepartner.payload.User;
-import com.experian.bepartner.payload.UserInfo;
-import com.experian.bepartner.payload.UserModel;
 import com.experian.bepartner.service.IUserService;
+import com.experian.bepartners.payload.Payload;
+import com.experian.bepartners.payload.Third;
+import com.experian.bepartners.payload.ThirdInfo;
+import com.experian.bepartners.payload.ThirdModel;
+import com.experian.bepartners.payload.User;
+import com.experian.bepartners.payload.UserInfo;
+import com.experian.bepartners.payload.UserModel;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { AppConfig.class })

@@ -9,25 +9,25 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.experian.bepartner.payload.Payload;
-import com.experian.bepartner.payload.RegisterModel;
-import com.experian.bepartner.service.IUserThirdService;
+import com.experian.bepartner.service.IRegisterService;
+import com.experian.bepartners.payload.Payload;
+import com.experian.bepartners.payload.RegisterModel;
 
 @RestController
-@RequestMapping("/api/userthird/create/")
+@RequestMapping("/api/userthird/")
 public class UserThirdController {
 
 	private static final Logger logger = LoggerFactory.getLogger(UserThirdController.class);
 
 	@Autowired
-	private IUserThirdService iUserThirdService;
+	private IRegisterService iRegisterService;
 
 	@PostMapping("/create/")
 	@CrossOrigin(origins = "*", maxAge = 3600)
-	public Payload create(@RequestBody RegisterModel userThirdModel) {
-		logger.debug("UserThirdController.create:" + userThirdModel.toString());
-//		Payload payload = iUserThirdService.mpUserThridCreate(userThirdModel);
-		return null;
+	public Payload create(@RequestBody RegisterModel registerModel) {
+		logger.debug("UserThirdController.create:" + registerModel.toString());
+		Payload register = iRegisterService.register(registerModel);
+		return register;
 	}
 
 }

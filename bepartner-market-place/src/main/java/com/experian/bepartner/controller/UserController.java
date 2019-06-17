@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.experian.bepartner.payload.Payload;
-import com.experian.bepartner.payload.UserModel;
 import com.experian.bepartner.service.IUserService;
+import com.experian.bepartners.payload.Payload;
+import com.experian.bepartners.payload.UserModel;
 
 @RestController
 @RequestMapping("/api/user/create/")

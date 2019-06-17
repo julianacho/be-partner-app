@@ -95,6 +95,11 @@
 			<artifactId>bepartner-orm</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
+		<dependency>
+			<groupId>com.experian</groupId>
+			<artifactId>bepartner-log</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 	</dependencies>
 
 	<build>

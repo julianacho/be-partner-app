@@ -6,8 +6,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
-import com.experian.bepartner.payload.Payload;
 import com.experian.bepartners.entity.UCatalog;
+import com.experian.bepartners.payload.Payload;
 
 @Service
 public class ComponentService implements IComponentService {

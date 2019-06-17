@@ -15,8 +15,8 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import com.experian.AppConfig;
 import com.experian.bepartner.dal.IProductDal;
 import com.experian.bepartner.dal.ProductDal;
-import com.experian.bepartner.payload.Product;
 import com.experian.bepartners.config.BepartnersDataSourceConfig;
+import com.experian.bepartners.payload.Product;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { AppConfig.class})
