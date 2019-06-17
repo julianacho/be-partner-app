@@ -2,12 +2,12 @@ package com.experian.bepartner.dal;
 
 import java.util.List;
 
-import com.experian.bepartner.payload.Third;
-import com.experian.bepartner.payload.ThirdInfo;
+import com.experian.bepartners.payload.Third;
+import com.experian.bepartners.payload.ThirdInfo;
 
 public interface IThirdDal {
 
-	public Third mpThirdCreate(Third third);
+	public Third mpThirdCreate(Third third) throws Exception;
 
-	public List<ThirdInfo> mpThirdInfoCreate(List<ThirdInfo> thirdInfos);
+	public List<ThirdInfo> mpThirdInfoCreate(List<ThirdInfo> thirdInfos) throws Exception;
 }

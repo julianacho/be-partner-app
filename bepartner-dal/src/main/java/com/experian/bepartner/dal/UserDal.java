@@ -12,13 +12,15 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import com.experian.bepartner.payload.User;
-import com.experian.bepartner.payload.UserInfo;
-import com.experian.bepartner.payload.UserThird;
+import com.experian.bepartners.payload.User;
+import com.experian.bepartners.payload.UserInfo;
+import com.experian.bepartners.payload.UserThird;
 import com.experian.process.IProcessService;
 
 @Service
+@Transactional
 public class UserDal implements IUserDal {
 
 	private static final Logger logger = LoggerFactory.getLogger(UserDal.class);
@@ -31,7 +33,7 @@ public class UserDal implements IUserDal {
 	private DataSource dataSource;
 
 	@Override
-	public User mpUserCreate(User user) {
+	public User mpUserCreate(User user) throws Exception{
 
 	
 		
@@ -65,7 +67,7 @@ public class UserDal implements IUserDal {
 	}
 
 	@Override
-	public List<UserInfo> mpUserInfoCreate(List<UserInfo> userInfoList) {
+	public List<UserInfo> mpUserInfoCreate(List<UserInfo> userInfoList) throws Exception{
 		List<UserInfo> response = new ArrayList<UserInfo>();
 		for (UserInfo usuarioInfo : userInfoList) {
 			Map<String, Object> parameters = new HashMap<String, Object>();

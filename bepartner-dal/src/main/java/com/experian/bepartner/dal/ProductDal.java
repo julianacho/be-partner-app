@@ -15,13 +15,16 @@ import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import com.experian.bepartner.payload.Product;
+import com.experian.bepartners.payload.Product;
 import com.experian.process.IProcessService;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 @Service
+@Transactional
 public class ProductDal implements IProductDal {
 
 	private static final Logger logger = LoggerFactory.getLogger(ProductDal.class);
@@ -37,7 +40,7 @@ public class ProductDal implements IProductDal {
 	private IProcessService iProcessService;
 
 	@Override
-	public Object mpProductCreate(Product producto, String message) {
+	public Object mpProductCreate(Product producto, String message) throws Exception{
 		Map<String, Object> parameters = new HashMap<String, Object>();
 		parameters.put("V_Name", producto.getVName());
 		parameters.put("V_Id_Product_Type", producto.getVIdProductType());

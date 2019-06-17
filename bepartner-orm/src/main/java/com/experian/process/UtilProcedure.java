@@ -27,7 +27,7 @@ public class UtilProcedure implements IUtilProcedure {
 	}
 
 	@Override
-	public Object callProcedure(String procedureName, Map<String, Object> parameters, Class<?> classreturn) {
+	public Object callProcedure(String procedureName, Map<String, Object> parameters, Class<?> classreturn) throws Exception{
 		logger.info("UtilProcedure.callProcedure : {}",parameters);
 		
 		simpleJdbcCall.withProcedureName(procedureName);
@@ -43,7 +43,7 @@ public class UtilProcedure implements IUtilProcedure {
 	}
 
 	@Override
-	public Object callFunction(String functionName, Map<String, Object> parameters, Class<?> classreturn) {
+	public Object callFunction(String functionName, Map<String, Object> parameters, Class<?> classreturn) throws Exception{
 		simpleJdbcCall.withFunctionName(functionName);
         simpleJdbcCall.withReturnValue();
         MapSqlParameterSource inParams = new MapSqlParameterSource();

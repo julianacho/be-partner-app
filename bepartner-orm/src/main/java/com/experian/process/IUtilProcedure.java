@@ -8,7 +8,7 @@ public interface IUtilProcedure {
 
 	public void setDatasource(DataSource datasource);
 	
-	public Object callProcedure(String procedureName, Map<String,Object> parameters, Class<?> classreturn);
+	public Object callProcedure(String procedureName, Map<String,Object> parameters, Class<?> classreturn) throws Exception;
 	
-	public Object callFunction(String functionName, Map<String,Object> parameters, Class<?> classreturn);
+	public Object callFunction(String functionName, Map<String,Object> parameters, Class<?> classreturn)throws Exception;
 }

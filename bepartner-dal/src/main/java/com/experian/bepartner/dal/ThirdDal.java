@@ -12,13 +12,15 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import com.experian.bepartner.payload.Third;
-import com.experian.bepartner.payload.ThirdInfo;
+import com.experian.bepartners.payload.Third;
+import com.experian.bepartners.payload.ThirdInfo;
 import com.experian.process.IProcessService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Service
+@Transactional
 public class ThirdDal implements IThirdDal {
 
 	private static final Logger logger = LoggerFactory.getLogger(ThirdDal.class);
@@ -31,7 +33,7 @@ public class ThirdDal implements IThirdDal {
 	private DataSource dataSource;
 
 	@Override
-	public Third mpThirdCreate(Third third) {
+	public Third mpThirdCreate(Third third) throws Exception{
 		Map<String, Object> parameters = new HashMap<String, Object>();
 		parameters.put("v_Id_Third_Public", third.getV_Id_Third_Public());
 		parameters.put("V_Id_Type", third.getV_Id_Type());
@@ -55,7 +57,7 @@ public class ThirdDal implements IThirdDal {
 	}
 
 	@Override
-	public List<ThirdInfo> mpThirdInfoCreate(List<ThirdInfo> thirdInfos) {
+	public List<ThirdInfo> mpThirdInfoCreate(List<ThirdInfo> thirdInfos) throws Exception{
 		List<ThirdInfo> response = new ArrayList<ThirdInfo>();
 		for (ThirdInfo thirdInfo : thirdInfos) {
 			Map<String, Object> parameters = new HashMap<String, Object>();

@@ -19,21 +19,21 @@ public class ProcessService implements IProcessService {
 	private IUtilProcedure iUtilProcedure;
 	
 	@Override
-	public Object callProcedure(DataSource datasource, String procedureName, Map<String, Object> parameters, Class<?> classreturn) {
+	public Object callProcedure(DataSource datasource, String procedureName, Map<String, Object> parameters, Class<?> classreturn) throws Exception{
 		iUtilProcedure.setDatasource(datasource);
 		return iUtilProcedure.callProcedure(procedureName, parameters,classreturn);
 	}
 
 	@Override
 	public Object callFunction(DataSource datasource, String functionName, Map<String, Object> parameters,
-			Class<?> classreturn) {
+			Class<?> classreturn)throws Exception {
 		iUtilProcedure.setDatasource(datasource);
 		return iUtilProcedure.callFunction(functionName, parameters, classreturn);
 	}
 
 	@Override
 	public <T> Object callProcedureResultToJson(DataSource datasource, String procedureName, Map<String, Object> parameters,
-			Class<?> classreturn) {
+			Class<?> classreturn) throws Exception{
 		return callProcedure(datasource, procedureName, parameters, Object.class);	
 	}
 }

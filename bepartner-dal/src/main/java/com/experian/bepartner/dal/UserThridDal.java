@@ -12,13 +12,15 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import com.experian.bepartner.payload.UserThird;
-import com.experian.bepartner.payload.UserThirdInfo;
-import com.experian.bepartner.payload.UserInfo;
+import com.experian.bepartners.payload.UserInfo;
+import com.experian.bepartners.payload.UserThird;
+import com.experian.bepartners.payload.UserThirdInfo;
 import com.experian.process.IProcessService;
 
 @Service
+@Transactional
 public class UserThridDal implements IUserThridDal {
 
 	private static final Logger logger = LoggerFactory.getLogger(UserThridDal.class);
@@ -33,7 +35,7 @@ public class UserThridDal implements IUserThridDal {
 
 
 	@Override
-	public UserThird mpUserThridCreate(UserThird userThird) {
+	public UserThird mpUserThridCreate(UserThird userThird) throws Exception{
 
 		Map<String, Object> parameters = new HashMap<String, Object>();
 		parameters.put("V_Id_User_Public", userThird.getvIdUserPublic());
@@ -43,7 +45,7 @@ public class UserThridDal implements IUserThridDal {
 		List<Map> listMap =  (List<Map>) iProcessService.callProcedure(dataSource, "SP_UpSert_User_third", parameters, Object.class);
  
 		UserThird userThirdResponse=new UserThird();
-		userThirdResponse.setIdUserThird(Integer.valueOf((String)listMap.get(0).get("Id_User_Third")));
+		userThirdResponse.setIdUserThird((Integer)listMap.get(0).get("Id_User_Third"));
 		logger.debug("UserThridDal.mpUserThridCreate {}", userThirdResponse);
 
 		return userThirdResponse;
