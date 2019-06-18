@@ -63,8 +63,8 @@ public class ThridTest {
 			if(payloadThirdResult.getStatus().equals(HttpStatus.ACCEPTED)) {
 				Third thirdResult=(Third) payloadThirdResult.getContent();
 				
-				ThirdInfo thirdInfoTHIDS=new ThirdInfo(thirdResult.getV_Id_Third_Public(), "THIDS", "Test 1", 1);
-				ThirdInfo thirdInfoEGSD=new ThirdInfo(thirdResult.getV_Id_Third_Public(), "EGSD", "Test 2", 1);
+				ThirdInfo thirdInfoTHIDS=new ThirdInfo(thirdResult.getvIdThirdPublic(), "THIDS", "Test 1", 1);
+				ThirdInfo thirdInfoEGSD=new ThirdInfo(thirdResult.getvIdThirdPublic(), "EGSD", "Test 2", 1);
 				
 				List<ThirdInfo> thirdInfos=new ArrayList<ThirdInfo>();
 				thirdInfos.add(thirdInfoTHIDS);

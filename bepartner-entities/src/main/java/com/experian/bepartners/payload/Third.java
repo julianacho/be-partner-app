@@ -4,74 +4,74 @@ import java.io.Serializable;
 
 public class Third implements Serializable {
 
-	private Integer Id_Third;
-	private String v_Id_Third_Public;
-	private String V_Id_Type;
-	private String V_Identification_Number;
-	private String V_Business_Name;
-	private Integer V_Enable;
+	private Integer IdThird;
+	private String vIdThirdPublic;
+	private String vIdType;
+	private String vIdentificationNumber;
+	private String vBusinessName;
+	private Integer vEnable;
 
 	public Third() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Third(String v_Id_Third_Public, String v_Id_Type, String v_Identification_Number, String v_Business_Name,
-			Integer v_Enable) {
+	public Third(String vIdThirdPublic, String vIdType, String vIdentificationNumber, String vBusinessName,
+			Integer vEnable) {
 		super();
-		this.v_Id_Third_Public = v_Id_Third_Public;
-		V_Id_Type = v_Id_Type;
-		V_Identification_Number = v_Identification_Number;
-		V_Business_Name = v_Business_Name;
-		V_Enable = v_Enable;
+		this.vIdThirdPublic = vIdThirdPublic;
+		this.vIdType = vIdType;
+		this.vIdentificationNumber = vIdentificationNumber;
+		this.vBusinessName = vBusinessName;
+		this.vEnable = vEnable;
 	}
 
-	public Integer getId_Third() {
-		return Id_Third;
+	public Integer getIdThird() {
+		return IdThird;
 	}
 
-	public void setId_Third(Integer id_Third) {
-		Id_Third = id_Third;
+	public void setIdThird(Integer idThird) {
+		IdThird = idThird;
 	}
 
-	public String getV_Id_Third_Public() {
-		return v_Id_Third_Public;
+	public String getvIdThirdPublic() {
+		return vIdThirdPublic;
 	}
 
-	public void setV_Id_Third_Public(String v_Id_Third_Public) {
-		this.v_Id_Third_Public = v_Id_Third_Public;
+	public void setvIdThirdPublic(String vIdThirdPublic) {
+		this.vIdThirdPublic = vIdThirdPublic;
 	}
 
-	public String getV_Id_Type() {
-		return V_Id_Type;
+	public String getvIdType() {
+		return vIdType;
 	}
 
-	public void setV_Id_Type(String v_Id_Type) {
-		V_Id_Type = v_Id_Type;
+	public void setvIdType(String vIdType) {
+		this.vIdType = vIdType;
 	}
 
-	public String getV_Identification_Number() {
-		return V_Identification_Number;
+	public String getvIdentificationNumber() {
+		return vIdentificationNumber;
 	}
 
-	public void setV_Identification_Number(String v_Identification_Number) {
-		V_Identification_Number = v_Identification_Number;
+	public void setvIdentificationNumber(String vIdentificationNumber) {
+		this.vIdentificationNumber = vIdentificationNumber;
 	}
 
-	public String getV_Business_Name() {
-		return V_Business_Name;
+	public String getvBusinessName() {
+		return vBusinessName;
 	}
 
-	public void setV_Business_Name(String v_Business_Name) {
-		V_Business_Name = v_Business_Name;
+	public void setvBusinessName(String vBusinessName) {
+		this.vBusinessName = vBusinessName;
 	}
 
-	public Integer getV_Enable() {
-		return V_Enable;
+	public Integer getvEnable() {
+		return vEnable;
 	}
 
-	public void setV_Enable(Integer v_Enable) {
-		V_Enable = v_Enable;
+	public void setvEnable(Integer vEnable) {
+		this.vEnable = vEnable;
 	}
 
 }

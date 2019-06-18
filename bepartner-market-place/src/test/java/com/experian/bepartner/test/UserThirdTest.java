@@ -34,7 +34,7 @@ public class UserThirdTest {
 	@Test
 	public void registerOk() {
 
-		User user = new User("", "IDENIT", "34578541", "Carlos", "Bill", "steven.ju@gmail.com", "23456448",
+		User user = new User("", "IDENIT", "37456767541", "Carlos", "Bill", "steven.ju@gmail.com", "23456448",
 				"foto url", EnableEnum.HABILITADO.getValue());
 		UserInfo userInfoDATO1 = new UserInfo("", "201001", "102002", EnableEnum.HABILITADO.getValue());
 		UserInfo userInfoDATO2 = new UserInfo("", "201002", "103001", EnableEnum.HABILITADO.getValue());
@@ -43,7 +43,7 @@ public class UserThirdTest {
 		userInfos.add(userInfoDATO1);
 		userInfos.add(userInfoDATO2);
 
-		Third third = new Third("", "IDENIT", "286658641", "ASAP X", EnableEnum.HABILITADO.getValue());
+		Third third = new Third("", "IDENIT", "3434562321", "ASAP X", EnableEnum.HABILITADO.getValue());
 		ThirdInfo thirdInfoTHIDS = new ThirdInfo("", "301006", "102002", EnableEnum.HABILITADO.getValue());
 		ThirdInfo thirdInfoEGSD = new ThirdInfo("", "301007", "105001", EnableEnum.HABILITADO.getValue());
 

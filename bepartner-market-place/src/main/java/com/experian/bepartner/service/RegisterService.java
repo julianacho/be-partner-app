@@ -6,9 +6,12 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.client.RestTemplate;
 
 import com.experian.bepartner.enums.CatalogThridInfoEnum;
 import com.experian.bepartner.enums.CatalogUserAddInfoEnum;
@@ -18,6 +21,7 @@ import com.experian.bepartner.enums.ListResponseEnum;
 import com.experian.bepartner.enums.RuesResponseEnum;
 import com.experian.bepartners.payload.Payload;
 import com.experian.bepartners.payload.RegisterModel;
+import com.experian.bepartners.payload.RuesRequest;
 import com.experian.bepartners.payload.Third;
 import com.experian.bepartners.payload.ThirdInfo;
 import com.experian.bepartners.payload.ThirdModel;
@@ -50,6 +54,9 @@ public class RegisterService implements IRegisterService {
 	
 	@Autowired
 	private ILogRegistroService iLogRegistroService;
+	
+	@Autowired
+	private RestTemplate restTemplate;
 
 	@Override
 	public Payload register(RegisterModel registerModel) {
@@ -59,17 +66,18 @@ public class RegisterService implements IRegisterService {
 			/**
 			 * Validacion de respuestas de servicios web de Listas y Evidente
 			 */
+			
 			registrar = validateListAndEvidente(registerModel);
 
 			/**
 			 * Habilita el registro
 			 */
 			if (registrar) {
-				registerModel.getThird().setV_Enable(EnableEnum.HABILITADO.getValue());
+				registerModel.getThird().setvEnable(EnableEnum.HABILITADO.getValue());
 				registerModel.getUser().setvEnable(EnableEnum.HABILITADO.getValue());
 				userThird.setvEnable(EnableEnum.HABILITADO.getValue());
 			} else {
-				registerModel.getThird().setV_Enable(EnableEnum.INHABILITADO.getValue());
+				registerModel.getThird().setvEnable(EnableEnum.INHABILITADO.getValue());
 				registerModel.getUser().setvEnable(EnableEnum.INHABILITADO.getValue());
 				userThird.setvEnable(EnableEnum.INHABILITADO.getValue());
 			}
@@ -80,8 +88,8 @@ public class RegisterService implements IRegisterService {
 			Payload thirdModelCreate = null;
 			Payload userModelCreate = null;
 
-			Payload thirdExist = iThirdService.findByIdentify(registerModel.getThird().getV_Id_Type(),
-					registerModel.getThird().getV_Identification_Number());
+			Payload thirdExist = iThirdService.findByIdentify(registerModel.getThird().getvIdType(),
+					registerModel.getThird().getvIdentificationNumber());
 			Payload userExist = iUserService.findByIdentify(registerModel.getUser().getvIdType(),
 					registerModel.getUser().getvIdentificationNumber());
 
@@ -105,11 +113,11 @@ public class RegisterService implements IRegisterService {
 					ThirdModel thirdPublic = (ThirdModel) thirdModelCreate.getContent();
 					UserModel userPublic = (UserModel) userModelCreate.getContent();
 
-					userThird.setvIdThirdPublic(thirdPublic.getThird().getV_Id_Third_Public());
+					userThird.setvIdThirdPublic(thirdPublic.getThird().getvIdThirdPublic());
 					userThird.setvIdUserPublic(userPublic.getUser().getvIdUserPublic());
 					
 					registerLog(
-							thirdPublic.getThird().getV_Id_Third_Public(), 
+							thirdPublic.getThird().getvIdThirdPublic(), 
 							userPublic.getUser().getvIdUserPublic(), 
 							ReasonLogsEnum.REGISTRO.getValue(), 
 							StatusLogEnum.EXITO.getValue(),thirdPublic,userPublic);
@@ -149,14 +157,14 @@ public class RegisterService implements IRegisterService {
 		}
 
 		for (ThirdInfo thirdInfo : registerModel.getThirdInfo()) {
-			if (thirdInfo.getV_Id_Info_Type_Third().equals(CatalogThridInfoEnum.VALIDATE_LIST.getValue())
-					&& !thirdInfo.getV_Value().equals(ListResponseEnum.NO_REPORTADO.getValue())) {
+			if (thirdInfo.getVIdInfoTypeThird().equals(CatalogThridInfoEnum.VALIDATE_LIST.getValue())
+					&& !thirdInfo.getVValue().equals(ListResponseEnum.NO_REPORTADO.getValue())) {
 				registrar = false;
 				break;
 			}
 
-			if (thirdInfo.getV_Id_Info_Type_Third().equals(CatalogThridInfoEnum.VALIDATE_RUES.getValue())
-					&& !thirdInfo.getV_Value().equals(RuesResponseEnum.APROBADO.getValue())) {
+			if (thirdInfo.getVIdInfoTypeThird().equals(CatalogThridInfoEnum.VALIDATE_RUES.getValue())
+					&& !thirdInfo.getVValue().equals(RuesResponseEnum.APROBADO.getValue())) {
 				registrar = false;
 				break;
 			}
@@ -178,8 +186,8 @@ public class RegisterService implements IRegisterService {
 		UserLogInfo logA=new UserLogInfo(jsonPetition, AddInfoLogEnum.PETICION_JSON.getValue());
 		UserLogInfo logB=new UserLogInfo(userPublic.getUser().getvIdType(), AddInfoLogEnum.TIP_IDENTIFICACION_USUARIO.getValue());
 		UserLogInfo logC=new UserLogInfo(userPublic.getUser().getvIdentificationNumber(), AddInfoLogEnum.IDENTIFICACION_USUARIO.getValue());
-		UserLogInfo logD=new UserLogInfo(thirdPublic.getThird().getV_Id_Type(), AddInfoLogEnum.TIP_IDENTIFICACION_USUARIO.getValue());
-		UserLogInfo logE=new UserLogInfo(thirdPublic.getThird().getV_Identification_Number(), AddInfoLogEnum.IDENTIFICACION_USUARIO.getValue());
+		UserLogInfo logD=new UserLogInfo(thirdPublic.getThird().getvIdType(), AddInfoLogEnum.TIP_IDENTIFICACION_USUARIO.getValue());
+		UserLogInfo logE=new UserLogInfo(thirdPublic.getThird().getvIdentificationNumber(), AddInfoLogEnum.IDENTIFICACION_USUARIO.getValue());
 		
 		
 		infos.add(logA);
@@ -191,6 +199,14 @@ public class RegisterService implements IRegisterService {
 						
 						
 		iLogRegistroService.logInfoRegister(vIdThirdPublic, vIdUserPublic, VIdRazon, VIdEstatus, infos);
+	}
+
+	@Override
+	public Payload requestRues(String nit) {
+		HttpEntity<RuesRequest> registerRequest = new HttpEntity<RuesRequest>(new RuesRequest(nit));
+		Payload registerResponse = restTemplate.exchange("http://localhost:8080/v1/catalog/rues/send/", HttpMethod.POST,
+				registerRequest, Payload.class).getBody();
+		return new Payload(HttpStatus.ACCEPTED,registerResponse.getContent());
 	}
 
 }

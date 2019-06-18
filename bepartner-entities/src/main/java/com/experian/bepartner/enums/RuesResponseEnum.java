@@ -1,7 +1,7 @@
 package com.experian.bepartner.enums;
 
 public enum RuesResponseEnum {
-	APROBADO("105001"), RECHAZADO("105002"), ERROR_CONSULTA("105003");
+	APROBADO("105001"), RECHAZADO("105002"), ERROR_CONSULTA("105003"),IDENTIFICACION_NO_EXISTE("105004");
 
 	private final String value;
 

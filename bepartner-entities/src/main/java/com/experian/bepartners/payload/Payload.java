@@ -1,11 +1,18 @@
 package com.experian.bepartners.payload;
 
+import java.io.Serializable;
+
 import org.springframework.http.HttpStatus;
 
-public class Payload {
+public class Payload implements Serializable {
 	private HttpStatus status;
 	private Object content;
 	private String message;
+
+	public Payload() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	public Payload(HttpStatus status, Object content) {
 		super();

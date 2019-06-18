@@ -4,19 +4,19 @@ import java.io.Serializable;
 
 public class ThirdInfo implements Serializable {
 
-	private Long Id_Third_InfioPrimaria;
-	private Long Id_Third;
-	private String V_Id_Third_Public;
-	private String V_Id_Info_Type_Third;
-	private String V_Value;
-	private Integer V_Enable;
+	private Long IdThirdInfioPrimaria;
+	private Long IdThird;
+	private String VIdThirdPublic;
+	private String VIdInfoTypeThird;
+	private String VValue;
+	private Integer VEnable;
 
-	public ThirdInfo(String v_Id_Third_Public, String v_Id_Info_Type_Third, String v_Value, Integer v_Enable) {
+	public ThirdInfo(String vIdThirdPublic, String vIdInfoTypeThird, String vValue, Integer vEnable) {
 		super();
-		V_Id_Third_Public = v_Id_Third_Public;
-		V_Id_Info_Type_Third = v_Id_Info_Type_Third;
-		V_Value = v_Value;
-		V_Enable = v_Enable;
+		VIdThirdPublic = vIdThirdPublic;
+		VIdInfoTypeThird = vIdInfoTypeThird;
+		VValue = vValue;
+		VEnable = vEnable;
 	}
 
 	public ThirdInfo() {
@@ -24,52 +24,52 @@ public class ThirdInfo implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Long getId_Third_InfioPrimaria() {
-		return Id_Third_InfioPrimaria;
+	public Long getIdThirdInfioPrimaria() {
+		return IdThirdInfioPrimaria;
 	}
 
-	public void setId_Third_InfioPrimaria(Long id_Third_InfioPrimaria) {
-		Id_Third_InfioPrimaria = id_Third_InfioPrimaria;
+	public void setIdThirdInfioPrimaria(Long idThirdInfioPrimaria) {
+		IdThirdInfioPrimaria = idThirdInfioPrimaria;
 	}
 
-	public Long getId_Third() {
-		return Id_Third;
+	public Long getIdThird() {
+		return IdThird;
 	}
 
-	public void setId_Third(Long id_Third) {
-		Id_Third = id_Third;
+	public void setIdThird(Long idThird) {
+		IdThird = idThird;
 	}
 
-	public String getV_Id_Third_Public() {
-		return V_Id_Third_Public;
+	public String getVIdThirdPublic() {
+		return VIdThirdPublic;
 	}
 
-	public void setV_Id_Third_Public(String v_Id_Third_Public) {
-		V_Id_Third_Public = v_Id_Third_Public;
+	public void setVIdThirdPublic(String vIdThirdPublic) {
+		VIdThirdPublic = vIdThirdPublic;
 	}
 
-	public String getV_Id_Info_Type_Third() {
-		return V_Id_Info_Type_Third;
+	public String getVIdInfoTypeThird() {
+		return VIdInfoTypeThird;
 	}
 
-	public void setV_Id_Info_Type_Third(String v_Id_Info_Type_Third) {
-		V_Id_Info_Type_Third = v_Id_Info_Type_Third;
+	public void setVIdInfoTypeThird(String vIdInfoTypeThird) {
+		VIdInfoTypeThird = vIdInfoTypeThird;
 	}
 
-	public String getV_Value() {
-		return V_Value;
+	public String getVValue() {
+		return VValue;
 	}
 
-	public void setV_Value(String v_Value) {
-		V_Value = v_Value;
+	public void setVValue(String vValue) {
+		VValue = vValue;
 	}
 
-	public Integer getV_Enable() {
-		return V_Enable;
+	public Integer getVEnable() {
+		return VEnable;
 	}
 
-	public void setV_Enable(Integer v_Enable) {
-		V_Enable = v_Enable;
+	public void setVEnable(Integer vEnable) {
+		VEnable = vEnable;
 	}
 
 }

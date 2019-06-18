@@ -35,7 +35,7 @@ public class ThirdService implements IThirdService {
 		try {
 			Third third = iThirdDal.mpThirdCreate(thirdModel.getThird());
 			for (ThirdInfo thirdInfo : thirdModel.getThirdInfos()) {
-				thirdInfo.setV_Id_Third_Public(third.getV_Id_Third_Public());
+				thirdInfo.setVIdThirdPublic(third.getvIdThirdPublic());
 			}
 			List<ThirdInfo> thirdInfos = iThirdDal.mpThirdInfoCreate(thirdModel.getThirdInfos());
 			return new Payload(HttpStatus.ACCEPTED, new ThirdModel(third, thirdInfos));
